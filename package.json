@@ -1,0 +1,30 @@
+{
+  "name": "testapi",
+  "version": "1.0.0",
+  "description": "A CLI tool to create mock APIs.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build" : "rm -rf dist && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aDiThYa-808/testAPI.git"
+  },
+  "bin": {
+    "testapi": "./bin/testapi.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aDiThYa-808/testAPI/issues"
+  },
+  "homepage": "https://github.com/aDiThYa-808/testAPI#readme",
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
