@@ -18,7 +18,7 @@ export function initHandler(): void{
         console.log("Project initialized.");            
         }
         catch(err){
-            console.log("Failed to initialize test api: ");
+            console.log("Failed to initialize testapi: ");
             console.log((err as Error).message);
         }
     }
@@ -26,7 +26,7 @@ export function initHandler(): void{
         try{
             const configFileContent = readFileSync(configFilePath,"utf-8");
             JSON.parse(configFileContent);
-            console.log("Project is already initialized.");
+            console.log("Project is already initialized. Use start --port to start the server");
         }
         catch(err){
             console.log("Failed to load testapi.json. Invalid JSON format.");
