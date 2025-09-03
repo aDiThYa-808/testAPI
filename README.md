@@ -1,2 +1,3 @@
 # testAPI
-A CLI tool to create mock APIs.
+A CLI tool to create mock APIs under development.
+documentation will be available soon...
