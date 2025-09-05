@@ -1,7 +1,8 @@
 import { startServer } from "../../core/server.js";
+import type { startOptions } from "../../utils/commandOptions.js";
 
-export function startHandler(port:string):void{
-    const selectedPortNumber = parseInt(port, 10);
+export function startHandler(options:startOptions):void{
+    const selectedPortNumber = parseInt(options.port, 10);
     if(!isValidPort(selectedPortNumber)){
         console.log(`Invalid port number: ${selectedPortNumber}. Please provide a valid port number between 1024 and 65535.`);
     }
