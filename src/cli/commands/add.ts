@@ -9,19 +9,28 @@ export function addHandler(options:addOptions):void{
         'method': options.method,
         'path': options.path,
         'response': JSON.parse(options.response),
-        'status': options.status
+        'status': Number(options.status)
     };
 
     const configFilePath = path.join(process.cwd(),"testapi.json");
 
     try{
-        if(doesConfigFileExist(configFilePath) && isValidMethod(options.method)){
-            const configFileContents = readFileSync(configFilePath,"utf-8");
-            const data = JSON.parse(configFileContents);
-            data.endpoints.push(newEndpoint);
-            const newConfigFileContent = JSON.stringify(data,null,2);
-            writeFileSync(configFilePath,newConfigFileContent,"utf-8")
-        }
+        //throws error if testapi.json doesnt exist.
+        doesConfigFileExist(configFilePath);
+
+        //throws error if the method is not GET,POST,PUT or DELETE.
+        isValidMethod(options.method);
+
+        const configFileContents = readFileSync(configFilePath,"utf-8");
+        const data = JSON.parse(configFileContents);
+
+        //throws error if newEndpoint.method and newEndpoint.path already exists in data.endpoints
+        doesEndpointExist(data.endpoints,newEndpoint); 
+
+        data.endpoints.push(newEndpoint);
+        const newConfigFileContent = JSON.stringify(data,null,2);
+        writeFileSync(configFilePath,newConfigFileContent,"utf-8");
+        
     }
     catch(err){
         console.log((err as Error).message);
@@ -29,16 +38,24 @@ export function addHandler(options:addOptions):void{
 }
 
 //helper functions
-function isValidMethod(method:string):Boolean{
+function isValidMethod(method:string):void{
     if(!validMethods.includes(method)){
         throw new Error("Invalid method. Try GET,POST,PUT or DELETE.")
     }
-    return true;
 }
 
-function doesConfigFileExist(path:string):Boolean{
+function doesConfigFileExist(path:string):void{
     if(!existsSync(path)){
         throw new Error("testapi.json not found. Use 'init' to create one.");
     }
-    return true;
+}
+
+function doesEndpointExist(endpoints:addOptions[],newEndpoint:addOptions):void{
+    const exists = endpoints.some((x:any)=>{
+        return x.method === newEndpoint.method && x.path === newEndpoint.path
+    });
+    
+    if(exists){
+        throw new Error("Endpoint already exist. Go to testapi.json to modify it.")
+    }
 }
