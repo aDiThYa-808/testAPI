@@ -1,13 +1,13 @@
 # testAPI
 
-A CLI tool to create and manage mock API endpoints from your terminal. It is designed mainly for frontend developers who want a simple way to test their application without setting up a backend.
+A CLI tool to create and manage mock API endpoints. It is designed mainly for frontend developers who want a simple way to test their application without setting up a backend server.
 
 ---
 
 ## Features (current stage)
-- Initialize a project with a `testapi.json` file.
+- Initialize project with a `testapi.json` file.
 - Start a local server in your desired port.
-- Add new endpoints with `--method`,`--path`,`--response` and `--status`(optional).
+- Add new endpoints with `--method`,`--path`,`--response` and `--status`(status code is optional).
 - The new endpoints are stored in `testapi.json` file. Duplicate entries are prevented.
 
 ---
@@ -17,7 +17,7 @@ A CLI tool to create and manage mock API endpoints from your terminal. It is des
 git clone https://github.com/aDiThYa-808/testAPI.git
 cd testAPI
 npm install
-npm run build //this will create `dist/`
+npm run build # this will create `dist/`
 ```
 
 ---
@@ -35,6 +35,8 @@ node dist/cli/index.js start ---port 3000
 ```bash
 node dist/cli/index.js add --method GET --path /users --response '[{"id":123,"name":"virat"},{"id":456,"name":"kohli"}]' --status 200
 ```
+
+---
 
 ## Next steps
 - Serve endpoints via a custom HTTP server.
