@@ -21,6 +21,9 @@ export function addHandler(options:addOptions):void{
         //throws error if the method is not GET,POST,PUT or DELETE.
         isValidMethod(options.method);
 
+        //throws error if the path doesnt begin with '/'
+        isValidPath(options.path);
+
         const configFileContents = readFileSync(configFilePath,"utf-8");
         const data = JSON.parse(configFileContents);
 
@@ -41,6 +44,12 @@ export function addHandler(options:addOptions):void{
 function isValidMethod(method:string):void{
     if(!validMethods.includes(method)){
         throw new Error("Invalid method. Try GET,POST,PUT or DELETE.")
+    }
+}
+
+function isValidPath(path:string):void{
+    if(path[0] !== "/"){
+        throw new Error("Invlaid path.")
     }
 }
 
