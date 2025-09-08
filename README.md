@@ -6,9 +6,9 @@ A CLI tool to create and manage mock API endpoints. It is designed mainly for fr
 
 ## Features (current stage)
 - Initialize project with a `testapi.json` file.
-- Start a local server in your desired port.
 - Add new endpoints with `--method`,`--path`,`--response` and `--status`(status code is optional).
 - The new endpoints are stored in `testapi.json` file. Duplicate entries are prevented.
+- Start a local server in your desired port.
 
 ---
 
@@ -27,19 +27,23 @@ npm run build # this will create `dist/`
 ```bash
 node dist/cli/index.js init
 ```
+### Add endpoint
+```bash
+node dist/cli/index.js add --method GET --path /users --response '[{"id":123,"name":"virat"},{"id":456,"name":"kohli"}]' --status 200
+```
 ### Start server
 ```bash
 node dist/cli/index.js start ---port 3000
 ```
-### Add endpoint
+### Call endpoint
 ```bash
-node dist/cli/index.js add --method GET --path /users --response '[{"id":123,"name":"virat"},{"id":456,"name":"kohli"}]' --status 200
+http://localhost:3000/users
 ```
 
 ---
 
 ## Next steps
-- Serve endpoints via a custom HTTP server.
+- Implement dynamic url handling.
 - Add `list` and `remove` commands.
 
 ---
