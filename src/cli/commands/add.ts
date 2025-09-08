@@ -21,7 +21,7 @@ export function addHandler(options:addOptions):void{
         //throws error if the method is not GET,POST,PUT or DELETE.
         isValidMethod(options.method);
 
-        //throws error if the path doesnt begin with '/'
+        //throws error if the path doesnt begin with '/'.
         isValidPath(options.path);
 
         const configFileContents = readFileSync(configFilePath,"utf-8");
@@ -60,7 +60,7 @@ function doesConfigFileExist(path:string):void{
 }
 
 function doesEndpointExist(endpoints:addOptions[],newEndpoint:addOptions):void{
-    const exists = endpoints.some((x:any)=>{
+    const exists = endpoints.some((x:addOptions)=>{
         return x.method === newEndpoint.method && x.path === newEndpoint.path
     });
     
