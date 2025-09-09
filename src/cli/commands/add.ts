@@ -6,7 +6,7 @@ const validMethods = ['GET','POST','PUT','DELETE'];
 
 export function addHandler(options:addOptions):void{
     const newEndpoint = {
-        'method': options.method,
+        'method': options.method.toUpperCase(),
         'path': options.path,
         'response': JSON.parse(options.response),
         'status': Number(options.status)

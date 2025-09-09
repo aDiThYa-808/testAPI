@@ -41,7 +41,7 @@ function doesConfigFileExist(path: string): void {
   }
 }
 
-function getResponse(endpoints:addOptions[],method:string,path:string):any | undefined{
+export function getResponse(endpoints:addOptions[],method:string,path:string):any | undefined{
     const match = endpoints.find((x:addOptions)=>
         x.method === method && x.path === path
     );
@@ -54,7 +54,7 @@ function getResponse(endpoints:addOptions[],method:string,path:string):any | und
     }
 }
 
-function getStatusCode(endpoints:addOptions[],method:string,path:string):number | undefined{
+export function getStatusCode(endpoints:addOptions[],method:string,path:string):number | undefined{
     const match = endpoints.find((x:addOptions)=>
         x.method === method && x.path === path
     );
