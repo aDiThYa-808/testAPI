@@ -22,7 +22,12 @@ npm run build # this will create `dist/`
 
 ---
 
-## Usage
+## Usage (current stage)
+### Build and test
+```bash
+npm run build
+npm test
+```
 ### Initialize project:
 ```bash
 node dist/cli/index.js init
@@ -33,11 +38,18 @@ node dist/cli/index.js add --method GET --path /users --response '[{"id":123,"na
 ```
 ### Start server
 ```bash
-node dist/cli/index.js start ---port 3000
+node dist/cli/index.js start --port 3000
 ```
 ### Call endpoint
 ```bash
-http://localhost:3000/users
+GET http://localhost:3000/users
+```
+### Expected response
+```json
+[
+  {"id":123,"name":"virat"},
+  {"id":456,"name":"kohli"}
+]
 ```
 
 ---
