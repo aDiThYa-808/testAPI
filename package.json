@@ -6,22 +6,30 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "build": "rm -rf dist && tsc"
+    "build": "npx rimraf dist && tsc",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aDiThYa-808/testAPI.git"
+    "url": "git+https://github.com/aDiThYa-808/testapi-cli.git"
   },
   "bin": {
     "testapi-cli": "./bin/testapi.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "cli",
+    "api",
+    "mock",
+    "test",
+    "server",
+    "developer-tools"
+  ],
+  "author": "Adithya.S adithyas824@gmail.com",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/aDiThYa-808/testAPI/issues"
+    "url": "https://github.com/aDiThYa-808/testapi-cli/issues"
   },
-  "homepage": "https://github.com/aDiThYa-808/testAPI#readme",
+  "homepage": "https://github.com/aDiThYa-808/testapi-cli#readme",
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^24.3.0",
@@ -29,5 +37,8 @@
     "ts-jest": "^29.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "rimraf": "^6.0.1"
   }
 }
