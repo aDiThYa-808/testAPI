@@ -1,4 +1,4 @@
-# testAPI
+# testapi-cli
 
 A CLI tool to create and manage mock API endpoints. It is designed mainly for frontend developers who want a simple way to test their application without setting up a backend server.
 
@@ -66,7 +66,7 @@ GET http://localhost:3000/users
 ---
 
 ## Contributing
-### Contribution are welcome. Please check CONTRIBUTING.md for the guidelines.
+### Contributions are welcome. Please check CONTRIBUTING.md for the guidelines.
 ---
 
 # THANK YOU
