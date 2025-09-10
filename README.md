@@ -23,22 +23,22 @@ npm run build # this will create `dist/`
 ---
 
 ## Usage (current stage)
-### Build and test
+
+### Guide
 ```bash
-npm run build
-npm test
+testapi-cli help
 ```
 ### Initialize project:
 ```bash
-node dist/cli/index.js init
+testapi-cli init
 ```
 ### Add endpoint
 ```bash
-node dist/cli/index.js add --method GET --path /users --response '[{"id":123,"name":"virat"},{"id":456,"name":"kohli"}]' --status 200
+testapi-cli add --method GET --path /users --response '[{"id":123,"name":"virat"},{"id":456,"name":"kohli"}]' --status 200
 ```
 ### Start server
 ```bash
-node dist/cli/index.js start --port 3000
+testapi-cli start --port 3000
 ```
 ### Call endpoint
 ```bash
@@ -55,7 +55,7 @@ GET http://localhost:3000/users
 ---
 
 ## Next steps
-- Implement dynamic url handling.
+- Implement delay option for responses.
 - Add `list` and `remove` commands.
 
 ---
