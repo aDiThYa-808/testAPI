@@ -1,5 +1,5 @@
 {
-  "name": "testapi",
+  "name": "testapi-cli",
   "version": "1.0.0",
   "description": "A CLI tool to create mock APIs.",
   "main": "index.js",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/aDiThYa-808/testAPI.git"
   },
   "bin": {
-    "testapi": "./bin/testapi.js"
+    "testapi-cli": "./bin/testapi.js"
   },
   "keywords": [],
   "author": "",

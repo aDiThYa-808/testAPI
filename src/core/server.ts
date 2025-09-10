@@ -63,6 +63,6 @@ export function getStatusCode(endpoints:addOptions[],method:string,path:string):
         return match.status ? match.status : undefined
     }
     else{
-        return undefined
+        return 404
     }
 }

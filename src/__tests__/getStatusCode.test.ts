@@ -30,6 +30,6 @@ describe("getStatusCode", () => {
   })
 
   test('returns undefined if there is no match',()=>{
-    expect(getStatusCode(endpoints,'GET','/doesnt/exist')).toBe(undefined);
+    expect(getStatusCode(endpoints,'GET','/doesnt/exist')).toBe(404);
   });
 });
