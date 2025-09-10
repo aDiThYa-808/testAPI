@@ -5,20 +5,22 @@ import type {
   initOptions,
   startOptions,
   addOptions,
+  helpOptions,
 } from "../utils/commandOptions.js";
-
-console.log("testAPI CLI running...");
+import { colors,reset } from "../utils/ANSIcodes.js";
+import { helpHandler } from "./commands/help.js";
 
 const args = process.argv.slice(2);
 
-const validCommands = ["init", "start", "add"];
+const validCommands = ["init", "start", "add", "help"];
 
-type Commands = "init" | "start" | "add";
+type Commands = "init" | "start" | "add" | "help";
 
 type CommandOptionsMap = {
   init: initOptions;
   start: startOptions;
   add: addOptions;
+  help: helpOptions;
 };
 
 type CommandHandler = {
@@ -29,6 +31,7 @@ const commandMap: CommandHandler = {
   init: initHandler,
   start: startHandler,
   add: addHandler,
+  help: helpHandler
 };
 
 try {
@@ -49,11 +52,14 @@ try {
       path: opts.path,
       response: opts.response,
       status: opts.status ? Number(opts.status) : undefined  // status is converted from string to number.
-    })
+    }),
+    help: ()=>({})
   }
 
   if (!rawCommand || !isCommand(rawCommand)) {
-    console.log("invalid command. try init, start or add");
+    console.log(colors.red+"[ERROR]: Invalid command."+reset);
+    console.log("[INFO]: For detailed usage instructions, run 'testapi-cli help'.");
+    
   } else {
     //typedOptions contains all the args with the correct type required by the commandHandler
     const typedOptions = optionMapper[rawCommand](optionsRecord);
@@ -78,7 +84,7 @@ function parseFlagsToOptions(args: string[]): Record<string, string> {
     const flag = args[i];
     const value = args[i + 1];
 
-    if (!flag || !value) throw new Error(`flag or value not found.`);
+    if (!flag || !value) throw new Error(colors.red + "[ERROR]: Flag or value not found." + reset + " [INFO]: For detailed usage instructions, run 'testapi-cli help'.");
 
     const key = flag.replace(/^--/, "");
     options[key] = value;

@@ -10,3 +10,5 @@ export interface addOptions{
     response:any,
     status?:number
 }
+
+export interface helpOptions {}

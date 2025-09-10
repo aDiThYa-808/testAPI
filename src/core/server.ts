@@ -3,6 +3,7 @@ import * as http from "http";
 import * as path from "path";
 import { URL } from "url";
 import type { addOptions } from "../utils/commandOptions";
+import { colors, reset } from "../utils/ANSIcodes.js";
 
 export function startServer(port: number): void {
   try {
@@ -27,7 +28,7 @@ export function startServer(port: number): void {
     });
 
     server.listen(port, "localhost", () => {
-      console.log(`server running at http://localhost:${port}/`);
+      console.log(`${colors.green}[SUCCESS]:Server running at${reset} http://localhost:${port}/`);
     });
   } catch (err) {
     console.log((err as Error).message);
@@ -37,7 +38,7 @@ export function startServer(port: number): void {
 //helper functions
 function doesConfigFileExist(path: string): void {
   if (!existsSync(path)) {
-    throw new Error("testapi.json file not found. use init to create.");
+    throw new Error(`${colors.red}[ERROR]: testapi-cli not initialized.${reset}. [INFO]: Run 'testapi-cli init'`);
   }
 }
 
